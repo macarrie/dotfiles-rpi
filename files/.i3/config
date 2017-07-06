@@ -1,0 +1,292 @@
+# i3 Config
+# vim: set syntax=sh:
+
+set $mod Mod4
+
+# Colors definitions
+####################
+	# NUMIX
+	#set $bg						#2D2D2D
+	#set $bg_accent					#383838
+	#set $primary					#D64937
+	#set $workspace_active			#D64937
+	#set $workspace_inactive		#999999
+	#set $focused			#EEEEEE
+	#set $focused_bg		#D64937
+	#set $unfocused		#EEEEEE
+	#set $unfocused_bg	#D64937
+
+	#arc
+	set $bg                     #2F343F
+	set $bg_accent              #404552
+	set $primary                #5294E2
+	set $workspace_active       #FFFFFF
+	set $workspace_inactive     #676E7A
+	set $focused                #EEEEEE
+	#set $focused_bg             #3971B8
+	#set $focused_border         #3971B8
+	set $focused_bg             #1565C0
+	set $focused_border         #1565C0
+    set $focused_indicator      #6EAAF7
+	set $unfocused              #666666
+	set $unfocused_bg           #1E232E
+	set $unfocused_border       #1E232E
+    set $unfocused_indicator    #FF0000
+    set $urgent                 #C62828
+
+set $borderSize 4
+set $gapsOuter 0
+set $gapsInner 20
+
+gaps outer $gapsOuter
+gaps inner $gapsInner
+smart_gaps on
+smart_borders on
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below. ISO 10646 = Unicode
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font pango:Inconsolata for Powerline 12px
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, if you need a lot of unicode glyphs or
+# right-to-left text rendering, you should instead use pango for rendering and
+# chose a FreeType font, such as:
+# font pango:DejaVu Sans Mono 10
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+set $term termite
+bindsym $mod+Return exec $term
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec rofi -show run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+bindsym $mod+Shift+d exec i3-dmenu-desktop --dmenu='rofi -i -dmenu -p "Desktop run: "'
+
+# Change focus
+bindsym $mod+Left 	focus left
+bindsym $mod+h		focus left
+bindsym $mod+Down 	focus down
+bindsym $mod+j		focus down
+bindsym $mod+Up 	focus up
+bindsym $mod+k		focus up
+bindsym $mod+Right 	focus right
+bindsym $mod+l		focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+m move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left 	move left
+bindsym $mod+Shift+Down 	move down
+bindsym $mod+Shift+Up 		move up
+bindsym $mod+Shift+Right 	move right
+
+# split in horizontal orientation
+bindsym $mod+Shift+h split h
+
+# split in vertical orientation
+bindsym $mod+Shift+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+z layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Toggle sticky window
+bindsym $mod+shift+s sticky toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+shift+a focus child
+
+# Workspace definitions
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
+set $ws8 "8:"
+set $ws7 "7:"
+set $ws9 "9:"
+set $ws10 "10:"
+
+# switch to workspace
+bindsym $mod+ampersand 	workspace $ws1
+bindsym $mod+eacute 	workspace $ws2
+bindsym $mod+quotedbl 	workspace $ws3
+bindsym $mod+apostrophe workspace 4
+bindsym $mod+parenleft 	workspace 5
+bindsym $mod+minus 		workspace 6
+bindsym $mod+egrave 	workspace $ws7
+bindsym $mod+underscore workspace $ws8
+bindsym $mod+ccedilla 	workspace $ws9
+bindsym $mod+agrave 	workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+ampersand 	move container to workspace $ws1
+bindsym $mod+Shift+eacute 		move container to workspace $ws2
+bindsym $mod+Shift+quotedbl 	move container to workspace $ws3
+bindsym $mod+Shift+apostrophe 	move container to workspace 4
+bindsym $mod+Shift+5 			move container to workspace 5
+bindsym $mod+Shift+minus 		move container to workspace 6
+bindsym $mod+Shift+egrave 		move container to workspace $ws7
+bindsym $mod+Shift+underscore 	move container to workspace $ws8
+bindsym $mod+Shift+ccedilla 	move container to workspace $ws9
+bindsym $mod+Shift+agrave 		move container to workspace $ws10
+
+# next/previous workspace
+bindsym Mod1+Tab 		workspace next
+bindsym Mod1+Shift+Tab 	workspace prev
+bindsym $mod+Tab 		workspace back_and_forth
+# Move to urgent workspace
+bindsym $mod+x [urgent=latest] focus
+
+# Rofi window switcher
+bindsym $mod+BackSpace exec --no-startup-id rofi -show window
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Escape		exec ~/scripts/dmenu_exit.sh "$bg" "$primary"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink 	width 10 px or 10 ppt
+        bindsym k resize grow 		height 10 px or 10 ppt
+        bindsym l resize shrink 	height 10 px or 10 ppt
+        bindsym m resize grow 		width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Click to focus
+focus_follows_mouse no
+
+bar {
+		mode dock
+		position top
+		workspace_buttons yes
+        status_command i3blocks
+        strip_workspace_numbers yes
+		font pango:Cabin, FontAwesome 11px
+		workspace_buttons yes
+
+		colors {
+                background $bg
+                focused_workspace 	$bg_accent	$bg_accent	$workspace_active
+                inactive_workspace 	$bg			$bg			$workspace_inactive
+                urgent_workspace    $urgent     $urgent     $workspace_active
+        }
+}
+
+# colors
+# class							border					backgr.				text                indicator
+client.focused					$focused_border		    $focused_bg		    $focused_text       $focused_indicator
+client.unfocused				$unfocused_border		$unfocused_bg		$unfocused_text     $unfocused_indicator
+client.focused_inactive			$unfocused_border		$unfocused_bg		$unfocused_text     $unfocused_indicator
+client.urgent                   $urgent                 $urgent             #444444             $urgent
+
+# Assigned Ctrl-Mod-L to lock screen via i3lock-wrapper script
+bindsym $mod+control+l exec --no-startup-id xautolock -locknow
+
+# Sound keymaps
+bindsym XF86AudioRaiseVolume 	exec "amixer -q set Master 5%+ unmute && pkill -SIGRTMIN+10 i3blocks"
+bindsym $mod+Prior			 	exec "amixer -q set Master 5%+ unmute && pkill -SIGRTMIN+10 i3blocks"
+bindsym XF86AudioLowerVolume 	exec "amixer -q set Master 5%- unmute && pkill -SIGRTMIN+10 i3blocks"
+bindsym $mod+Next			 	exec "amixer -q set Master 5%- unmute && pkill -SIGRTMIN+10 i3blocks"
+bindsym XF86AudioMute 			exec "amixer -D pulse set Master toggle && pkill -SIGRTMIN+10 i3blocks"
+bindsym XF86AudioMicMute 		exec "amixer -D pulse sset Capture toggle && pkill -SIGRTMIN+10 i3blocks"
+bindsym $mod+control+v			exec "$term -x alsamixer"
+
+# bar toggle, hide or show
+bindsym $mod+b bar mode toggle
+
+# Caps lock control
+bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
+
+# scratchpad
+exec $term --title "scratchpad" -e "tmux attach -t scratchpad"
+for_window [title="scratchpad"] floating enable;
+for_window [title="scratchpad"] resize set 900 600;
+for_window [title="scratchpad"] move position center;
+for_window [title="scratchpad"] move scratchpad;
+bindsym $mod+shift+o move scratchpad
+bindsym $mod+o scratchpad show
+
+# Screenshots
+bindsym Print 		exec scrot '%d-%m-%Y_%s_$wx$h.png' -e 'mv $f ~/Screenshots/' && notify-send  -u normal -t 4 "Screenshot captured"
+bindsym $mod+Print 	exec scrot -u '%d-%m-%Y_%s_$wx$h.png' -e 'mv $f ~/Screenshots/' && notify-send  -u normal -t 4 "Screenshot captured"
+
+# Apps shortcuts
+bindsym $mod+c exec chromium
+bindsym $mod+shift+Return exec nautilus
+
+# Autopositionning settings
+for_window [window_role="pop-up"] 			floating enable
+for_window [window_role="task_dialog"] 		floating enable
+for_window [instance="__float__"]	    	floating enable
+for_window [title="Telegram Web"]			floating enable
+for_window [class="X-terminal-emulator"]	border pixel $borderSize
+assign [title="Telegram Web"]  $ws9
+assign [class="Kodi"]          $ws8
+assign [class="Spotify"]       $ws10
+
+# Border controls
+bindsym $mod+t border normal $borderSize
+bindsym $mod+y border pixel $borderSize
+bindsym $mod+u border none
+new_window 	pixel $borderSize
+new_float 	pixel $borderSize
+
+# Gaps control
+bindsym $mod+g gaps inner all set $gapsInner; gaps outer all set $gapsOuter
+bindsym $mod+Shift+g gaps inner all set 0; gaps outer all set 0
+
+# Wallchanger shortcut
+bindsym $mod+w exec ~/scripts/random_wallpaper.sh
+
+# Startup apps
+
+exec_always --no-startup-id ~/scripts/random_wallpaper.sh
+
+# Set volume to 20% at startup
+exec "amixer -q set Master 20% unmute && pkill -SIGRTMIN+10 i3blocks"

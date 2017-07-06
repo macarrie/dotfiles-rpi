@@ -1,0 +1,22 @@
+---
+- name: YAOURT | Create user tmp dir
+  file: state=directory
+        name=~/tmp
+
+- name: YAOURT | Clone package-query repo
+  git: repo=https://aur.archlinux.org/package-query.git
+       dest=~/tmp/package-query
+
+- name: YAOURT | Compile package-query
+  command: makepkg -si --noconfirm --needed
+  args:
+      chdir: ~/tmp/package-query/
+
+- name: YAOURT | Clone yaourt repo
+  git: repo=https://aur.archlinux.org/yaourt.git
+       dest=~/tmp/yaourt
+
+- name: YAOURT | Compile yaourt
+  command: makepkg -si --noconfirm --needed --force
+  args:
+      chdir: ~/tmp/yaourt/

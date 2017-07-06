@@ -1,0 +1,25 @@
+---
+- name: VIM | Clone Vundle
+  tags: [vim]
+  git: repo=https://github.com/VundleVim/Vundle.vim.git
+       dest=~/.vim/bundle/Vundle.vim
+       update=yes
+
+- name: VIM | Link config
+  tags: [vim]
+  file: src={{ dotfiles_path }}/.vimrc
+        dest=~/.vimrc
+        state=link 
+        force=yes
+
+- name: VIM | Install plugins
+  shell: echo | echo | vim +PluginInstall +qall
+
+- name: VIM | Create tmp dir
+  file: state=directory
+        path=~/.vimtmp
+
+- name: Create .config user folder if absent
+  file: path=/home/{{ username }}/.config
+        state=directory
+        owner="{{ username }}"

@@ -1,0 +1,25 @@
+---
+
+# Disks
+#primary_disk: /dev/sda
+
+# Bootloader 
+# Bootloader type. Possible values: grub,uefi
+# If uefi, specify boot partition
+#bootloader: uefi
+#boot_partition: /dev/sda2
+#root_partition: /dev/sda1
+#btrfs: False
+
+# Host and username
+hostname: hurensohn
+username: mat
+
+# Is host being installed in a VM ?
+#virtualmachine: False
+
+# Config deployment vars
+dotfiles_path: /home/{{ username }}/dotfiles/files
+#git_mail: mathieu0carrie@gmail.com
+#git_user: macarrie
+

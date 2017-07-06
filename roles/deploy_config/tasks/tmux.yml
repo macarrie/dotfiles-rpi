@@ -1,0 +1,15 @@
+---
+- name: TMUX | Link config file
+  file: src={{ dotfiles_path }}/.tmux.conf
+        dest=~/.tmux.conf
+        state=link
+        force=yes
+
+- name: TMUX | Link tmuxp configuration
+  file: src={{dotfiles_path }}/.tmuxp
+        dest=~/.tmuxp
+        state=link
+        force=yes
+
+- name: TMUX | Load sessions
+  shell: tmuxp load -d ~/.tmuxp/*

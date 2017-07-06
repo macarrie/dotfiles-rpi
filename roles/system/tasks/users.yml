@@ -1,0 +1,52 @@
+---
+- name: Change root password
+  user: name=root
+        password={{ root_pwd }}
+        state=present
+
+- name: Create {{ username }} user account
+  user: name={{ username }}
+        password={{ user_pwd }}
+        state=present
+
+- name: Deploy sudoers file
+  template: src=sudoers.j2
+            dest=/etc/sudoers
+
+- name: Add {{ username }} to wheel group
+  user: name={{ username }}
+        groups=wheel
+        append=yes
+
+- name: Clone repo for user
+  ignore_errors: True
+  git: repo=https://github.com/macarrie/dotfiles
+       dest=/home/{{ username }}/dotfiles
+
+- name: chown dotfiles repo to user
+  file: path=/home/{{ username  }}/dotfiles
+        owner={{ username }}
+        group={{ username }}
+        recurse=yes
+  become: yes
+  #shell: chown -R {{ username}}:{{ username }} /home/{{ username }}/dotfiles
+  
+
+# KODI account setup
+#####################
+
+- name: Create kodi user account
+  user: name=kodi
+        password=kodi
+        state=present
+
+- name: Add kodi to wheel group
+  user: name=kodi
+        groups=wheel
+        append=yes
+
+- name: Link xinitrc to kodi user conf
+  file: src={{ dotfiles_path }}/.xinitrc
+        dest=/home/kodi/.xinitrc
+        state=link
+        force=yes

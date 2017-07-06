@@ -1,0 +1,38 @@
+[global]
+    font = "Cabin 10"
+    allow_markup = yes
+    format = "<b>%s %p</b>\n%b"
+    sort = yes
+    indicate_hidden = no
+    show_age_threshold = 10
+    idle_threshold = 120
+    geometry = "250x5-20+40"
+    alignment = center
+    sticky_history = no
+    follow = mouse
+    word_wrap = yes
+    padding = 10
+    horizontal_padding = 10
+    separator_color = auto
+    startup_notification = false
+    transparency = 10
+
+[shortcuts]
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    context = ctrl+shift+period
+
+[urgency_low]
+    background = "#000000"
+    foreground = "#999999"
+    timeout = 10
+
+[urgency_normal]
+    background = "#000000"
+    foreground = "#EEEEEE"
+    timeout = 10
+
+[urgency_critical]
+    background = "#5294E2"
+    foreground = "#EEEEEE"
+    timeout = 0

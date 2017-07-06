@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Set keymap
+setxkbmap fr
+
+# Export localtime
+export TZ=/etc/localtime
+
+# Startup apps
+
+# Notifications server
+setxkbmap -option caps:escape &
+# Disable effing hardware bell
+xset b off
+# Compositor
+udiskie -s &
+
+# Load tmux sessions
+
+# Start WM
+exec kodi
