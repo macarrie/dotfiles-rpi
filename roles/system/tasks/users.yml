@@ -20,11 +20,11 @@
 
 - name: Clone repo for user
   ignore_errors: True
-  git: repo=https://github.com/macarrie/dotfiles
-       dest=/home/{{ username }}/dotfiles
+  git: repo=https://github.com/macarrie/dotfiles-rpi
+       dest=/home/{{ username }}/dotfiles-rpi
 
 - name: chown dotfiles repo to user
-  file: path=/home/{{ username  }}/dotfiles
+  file: path=/home/{{ username  }}/dotfiles-rpi
         owner={{ username }}
         group={{ username }}
         recurse=yes
@@ -45,8 +45,14 @@
         groups=wheel
         append=yes
 
-- name: Link xinitrc to kodi user conf
+- name: Link zprofile to kodi user conf
   file: src={{ dotfiles_path }}/.xinitrc
+        dest=/home/kodi/.zprofile
+        #state=link
+        force=yes
+
+- name: Link xinitrc to kodi user conf
+  file: src={{ dotfiles_path }}/.xinitrc.kodi
         dest=/home/kodi/.xinitrc
-        state=link
+        #state=link
         force=yes

@@ -19,7 +19,7 @@ username: mat
 #virtualmachine: False
 
 # Config deployment vars
-dotfiles_path: /home/{{ username }}/dotfiles/files
+dotfiles_path: /home/{{ username }}/dotfiles-rpi/files
 #git_mail: mathieu0carrie@gmail.com
 #git_user: macarrie
 

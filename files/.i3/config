@@ -34,14 +34,14 @@ set $mod Mod4
     set $unfocused_indicator    #FF0000
     set $urgent                 #C62828
 
-set $borderSize 4
-set $gapsOuter 0
-set $gapsInner 20
+#set $borderSize 4
+#set $gapsOuter 0
+#set $gapsInner 20
 
-gaps outer $gapsOuter
-gaps inner $gapsInner
-smart_gaps on
-smart_borders on
+#gaps outer $gapsOuter
+#gaps inner $gapsInner
+#smart_gaps on
+#smart_borders on
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -278,8 +278,8 @@ new_window 	pixel $borderSize
 new_float 	pixel $borderSize
 
 # Gaps control
-bindsym $mod+g gaps inner all set $gapsInner; gaps outer all set $gapsOuter
-bindsym $mod+Shift+g gaps inner all set 0; gaps outer all set 0
+#bindsym $mod+g gaps inner all set $gapsInner; gaps outer all set $gapsOuter
+#bindsym $mod+Shift+g gaps inner all set 0; gaps outer all set 0
 
 # Wallchanger shortcut
 bindsym $mod+w exec ~/scripts/random_wallpaper.sh

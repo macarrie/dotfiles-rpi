@@ -12,11 +12,12 @@
   with_items:
     # Xorg
     - xorg-server
-    - xorg-server-utils
+    #- xorg-server-utils
+    - xf86-video-fbdev
     - xorg-xinit
     - xclip
     - xautolock
-    #- numlockx
+    - numlockx
 
     # Utilies
     - ntp
@@ -31,7 +32,7 @@
     - dunst
     - xorg-xrandr
     - arandr
-    - termite-git
+    - termite
     #- redshift
     - udiskie
 
@@ -54,7 +55,7 @@
     #- transmission-gtk
 
     # Desktop environment
-    - i3-gaps
+    - i3
     - i3lock
     - i3blocks
     - rofi
@@ -79,8 +80,8 @@
     - nautilus
     #- nautilus-dropbox
     #- evince
-    - unzip
-    - git
+    #- unzip
+    #- git
     #- subversion
 
     # Multimedia

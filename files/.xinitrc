@@ -28,7 +28,7 @@ xautolock -locker $locker -time 10 -notify 30 -notifier "notify-send 'Autolock i
 # Maps caps lock to additional escape
 setxkbmap -option caps:escape &
 # Numlock at startup
-#numlockx &
+numlockx &
 # Disable touchpad when typing
 #syndaemon -i 0.5 -d &
 # Click when tapping touchpad

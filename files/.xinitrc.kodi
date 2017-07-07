@@ -15,7 +15,5 @@ xset b off
 # Compositor
 udiskie -s &
 
-# Load tmux sessions
-
 # Start WM
 exec kodi

@@ -1,4 +1,10 @@
 ---
+- name: Install script dependencies
+  pacman: name={item}
+          state=present
+  with_items:
+      - base-devel
+
 - name: Setup hostname
   shell: echo {{ hostname }} > /etc/hostname
 
@@ -8,8 +14,8 @@
   template: src=vconsole.conf.j2
             dest=/etc/vconsole.conf
 
-- name: Setup ramdisk
-  shell: mkinitcpio -p linux
+#- name: Setup ramdisk
+  #shell: mkinitcpio -p linux
 
 - name: Change fstab mount options (noatime)
   replace:  dest=/etc/fstab
