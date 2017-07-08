@@ -1,6 +1,6 @@
 ---
 - name: Install script dependencies
-  pacman: name={item}
+  pacman: name={{item}}
           state=present
   with_items:
       - base-devel

@@ -24,7 +24,7 @@
        dest=/home/{{ username }}/dotfiles-rpi
 
 - name: chown dotfiles repo to user
-  file: path=/home/{{ username  }}/dotfiles-rpi
+  file: path=/home/{{ username }}/dotfiles-rpi
         owner={{ username }}
         group={{ username }}
         recurse=yes
@@ -46,13 +46,22 @@
         append=yes
 
 - name: Link zprofile to kodi user conf
-  file: src={{ dotfiles_path }}/.xinitrc
+  copy: src={{ dotfiles_path }}/.xinitrc
         dest=/home/kodi/.zprofile
         #state=link
-        force=yes
+        #force=yes
 
 - name: Link xinitrc to kodi user conf
-  file: src={{ dotfiles_path }}/.xinitrc.kodi
+  copy: src={{ dotfiles_path }}/.xinitrc.kodi
         dest=/home/kodi/.xinitrc
         #state=link
+        #force=yes
+
+- name: Link zsh config for kodi user
+  file: src={{ dotfiles_path }}/{{ item }}
+        dest=~/{{ item  }} 
+        state=link 
         force=yes
+  with_items:
+    - .zshrc
+    - .zprofile

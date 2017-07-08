@@ -86,7 +86,7 @@
 
     # Multimedia
     #- vlc
-    - kodi
+    - kodi-rbp
 
 #- name: Install virtualbox guest packages
   #shell: yaourt -S {{ item }} --noconfirm --needed
