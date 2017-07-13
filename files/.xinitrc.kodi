@@ -12,8 +12,6 @@ export TZ=/etc/localtime
 setxkbmap -option caps:escape &
 # Disable effing hardware bell
 xset b off
-# Compositor
-udiskie -s &
 
 # Transmission
 transmission-daemon --auth --username transmission --password transmission --port 9091 --allowed "192.168.0.*"
