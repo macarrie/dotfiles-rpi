@@ -1,0 +1,4 @@
+---
+- name: Setup network config
+  template: src=eth0.network
+            dest=/etc/systemd/network/eth0.network

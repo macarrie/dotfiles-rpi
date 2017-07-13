@@ -14,19 +14,18 @@
   template: src=vconsole.conf.j2
             dest=/etc/vconsole.conf
 
-#- name: Setup ramdisk
-  #shell: mkinitcpio -p linux
-
 - name: Change fstab mount options (noatime)
   replace:  dest=/etc/fstab
             regexp='relatime'
             replace='noatime'
             backup=yes
 
-#- include: bootloader.yml
+- name: Set persistent mount point for MAXELL HDD 
+  mount:    path=/mnt/maxellhdd
+            src='LABEL=MAXELLHDD'
+            state=mounted
+            fstype=vfat
 
+- include: network.yml
 - include: users.yml
-
-#- name: Enable dhcpcd service
-  #service: name=dhcpcd
-           #enabled=yes
+- include: kodi.yml

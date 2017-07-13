@@ -12,7 +12,6 @@
   with_items:
     # Xorg
     - xorg-server
-    #- xorg-server-utils
     - xf86-video-fbdev
     - xorg-xinit
     - xclip
@@ -21,10 +20,7 @@
 
     # Utilies
     - ntp
-    #- xf86-input-synaptics
     - alsa-utils
-    - networkmanager
-    - network-manager-applet
     - sysstat
     - acpi
     - cronie
@@ -52,7 +48,7 @@
     - curl
     - wget
     - chromium
-    #- transmission-gtk
+    - transmission-cli
 
     # Desktop environment
     - i3
@@ -87,35 +83,6 @@
     # Multimedia
     #- vlc
     - kodi-rbp
-
-#- name: Install virtualbox guest packages
-  #shell: yaourt -S {{ item }} --noconfirm --needed
-  #when: ansible_os_family == "Archlinux", virtualmachine == True
-  #ignore_errors: True
-  #with_items:
-    #- virtualbox-guest-modules-arch
-    #- virtualbox-guest-utils
-
-#- name: Enable services
-  #service: name={{ item }}
-           #enabled=yes
-  #become: yes
-  #become_user: root
-  #with_items:
-      #- NetworkManager
-      #- ntp
-      #- cronie
-
-#- name: Setup Cron jobs
-  #become: yes
-  #become_user: root
-  #cron: name="Wallpaper"
-        #state=present
-        #minute="*/15"
-        #job="DISPLAY=:0.0 /home/{{ username }}/scripts/random_wallpaper.sh"
-        #user="{{ username }}"
-
-#- include: git.yml
 
 - include: chsh.yml
 

@@ -109,7 +109,7 @@ $(identifier): $(current_dir) $(git_prompt)     $(hour)
 
 # EXPORTS
     export EDITOR=vim
-    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin"
+    export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/.local/bin:/usr/bin/vendor_perl"
     export TERMINAL=termite
 
 # ALIAS

@@ -15,5 +15,8 @@ xset b off
 # Compositor
 udiskie -s &
 
+# Transmission
+transmission-daemon --auth --username transmission --password transmission --port 9091 --allowed "192.168.0.*"
+
 # Start WM
-exec kodi
+exec kodi-standalone

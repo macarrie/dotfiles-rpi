@@ -1,0 +1,42 @@
+# KODI account setup
+#####################
+
+- name: Create kodi user account
+  user: name=kodi
+        password=kodi
+        state=present
+
+- name: Add kodi to wheel group
+  user: name=kodi
+        groups=wheel,video
+        append=yes
+        shell=/bin/zsh
+
+- name: Link zprofile to kodi user conf
+  copy: src={{ dotfiles_path }}/.xinitrc
+        dest=/home/kodi/.zprofile
+        owner=kodi
+        group=kodi
+
+- name: Link xinitrc to kodi user conf
+  copy: src={{ dotfiles_path }}/.xinitrc.kodi
+        dest=/home/kodi/.xinitrc
+        owner=kodi
+        group=kodi
+
+- name: Link zsh config for kodi user
+  file: src={{ dotfiles_path }}/{{ item }}
+        dest=~/{{ item  }} 
+        owner=kodi
+        group=kodi
+  with_items:
+    - .zshrc
+    - .zprofile
+
+- name: Add users to video group
+  user: name={{item}}
+        append=yes
+        groups=video
+  with_items:
+      - {{ username }}
+      - kodi

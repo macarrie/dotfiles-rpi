@@ -14,10 +14,12 @@ install() {
 }
 
 main() {
+    # Change kodi password
+	echo -e "\n\nChange kodi user password"
+    sudo passwd kodi
+
 	# Enable services
 	echo -e "\n\nEnable and start services"
-    startAndEnable dhcpcd
-    startAndEnable NetworkManager
     startAndEnable ntpd
     startAndEnable cronie
 

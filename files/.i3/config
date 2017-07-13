@@ -34,9 +34,9 @@ set $mod Mod4
     set $unfocused_indicator    #FF0000
     set $urgent                 #C62828
 
-#set $borderSize 4
-#set $gapsOuter 0
-#set $gapsInner 20
+set $borderSize 4
+set $gapsOuter 0
+set $gapsInner 20
 
 #gaps outer $gapsOuter
 #gaps inner $gapsInner
