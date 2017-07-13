@@ -38,5 +38,5 @@
         append=yes
         groups=video
   with_items:
-      - {{ username }}
+      - "{{ username }}"
       - kodi
