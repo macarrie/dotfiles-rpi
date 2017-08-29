@@ -20,7 +20,7 @@
 
     # Utilies
     - ntp
-    - alsa-utils
+    - pulseaudio
     - sysstat
     - acpi
     - cronie
@@ -29,7 +29,6 @@
     - xorg-xrandr
     - arandr
     - termite
-    #- redshift
     - udiskie
 
     # Dev utils
@@ -47,7 +46,7 @@
     - openssl
     - curl
     - wget
-    - chromium
+    - firefox
     - transmission-cli
 
     # Desktop environment
@@ -57,7 +56,6 @@
     - rofi
     - unclutter
     - bc
-    #- compton
 
     # Theming
     - feh
@@ -67,7 +65,7 @@
     - ttf-impallari-cabin-font
     - ttf-font-awesome
     - terminus-font
-    - ephifonts-no-helvetica
+    #- ephifonts-no-helvetica
     - lxappearance
     - arc-icon-theme-git
     - arc-gtk-theme

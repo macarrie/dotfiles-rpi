@@ -8,25 +8,25 @@
 
 - name: Add kodi to wheel group
   user: name=kodi
-        groups=wheel,video
+        groups=wheel
         append=yes
         shell=/bin/zsh
 
 - name: Link zprofile to kodi user conf
-  copy: src={{ dotfiles_path }}/.xinitrc
+  copy: src=files/.zprofile
         dest=/home/kodi/.zprofile
         owner=kodi
         group=kodi
 
 - name: Link xinitrc to kodi user conf
-  copy: src={{ dotfiles_path }}/.xinitrc.kodi
+  copy: src=files/.xinitrc.kodi
         dest=/home/kodi/.xinitrc
         owner=kodi
         group=kodi
 
 - name: Link zsh config for kodi user
-  file: src={{ dotfiles_path }}/{{ item }}
-        dest=~/{{ item  }} 
+  copy: src=files/{{ item }}
+        dest=/home/kodi/{{ item  }} 
         owner=kodi
         group=kodi
   with_items:
