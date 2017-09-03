@@ -1,0 +1,11 @@
+gpu_mem=256
+initramfs initramfs-linux.img followkernel
+
+dtparam=audio=on
+
+# CEA
+hdmi_group=1
+# 1080p 60Hz
+hdmi_mode=16
+
+disable_overscan=1

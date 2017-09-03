@@ -20,7 +20,7 @@
 
     # Utilies
     - ntp
-    - pulseaudio
+    - alsa-utils
     - sysstat
     - acpi
     - cronie

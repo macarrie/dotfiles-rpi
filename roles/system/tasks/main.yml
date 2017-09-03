@@ -26,6 +26,10 @@
             state=mounted
             fstype=vfat
 
+- name: Change boot config
+  copy: src=files/bootconfig.txt
+        dest=/boot/config.txt
+
 - include: network.yml
 - include: users.yml
 - include: kodi.yml
